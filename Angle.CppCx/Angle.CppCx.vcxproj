@@ -139,7 +139,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="App.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
