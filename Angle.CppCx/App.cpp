@@ -89,18 +89,17 @@ namespace Angle {
 			CleanupEGL();
 		}		
 
-		// Window event handlers.
-		void App::OnWindowVisibilityChanged(CoreWindow^ sender, VisibilityChangedEventArgs^ args)
+		void OnWindowVisibilityChanged(CoreWindow^ sender, VisibilityChangedEventArgs^ args)
 		{
 			mWindowVisible = args->Visible;
 		}
 
-		void App::OnWindowClosed(CoreWindow^ sender, CoreWindowEventArgs^ args)
+		void OnWindowClosed(CoreWindow^ sender, CoreWindowEventArgs^ args)
 		{
 			mWindowClosed = true;
 		}
 
-		void App::InitializeEGL(CoreWindow^ window)
+		void InitializeEGL(CoreWindow^ window)
 		{
 			const EGLint configAttributes[] =
 			{
@@ -217,7 +216,7 @@ namespace Angle {
 			}
 		}
 
-		void App::CleanupEGL()
+		void CleanupEGL()
 		{
 			if (mEglDisplay != EGL_NO_DISPLAY && mEglSurface != EGL_NO_SURFACE)
 			{
