@@ -18,6 +18,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)SimpleRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)angle.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MathHelper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SimpleRenderer.h" />
   </ItemGroup>
