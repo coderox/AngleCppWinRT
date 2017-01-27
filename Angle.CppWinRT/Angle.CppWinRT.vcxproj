@@ -110,6 +110,9 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PreprocessorDefinitions>__CPPWINRT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy Angle_CppWinRT.winmd $(OutDir)Angle_CppWinRT.winmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
@@ -119,6 +122,9 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PreprocessorDefinitions>__CPPWINRT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy Angle_CppWinRT.winmd $(OutDir)Angle_CppWinRT.winmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -128,6 +134,9 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PreprocessorDefinitions>__CPPWINRT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy Angle_CppWinRT.winmd $(OutDir)Angle_CppWinRT.winmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +146,9 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PreprocessorDefinitions>__CPPWINRT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy Angle_CppWinRT.winmd $(OutDir)Angle_CppWinRT.winmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -146,6 +158,9 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PreprocessorDefinitions>__CPPWINRT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy Angle_CppWinRT.winmd $(OutDir)Angle_CppWinRT.winmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -155,6 +170,9 @@
       <CompileAsWinRT>false</CompileAsWinRT>
       <PreprocessorDefinitions>__CPPWINRT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>copy Angle_CppWinRT.winmd $(OutDir)Angle_CppWinRT.winmd</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
