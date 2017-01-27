@@ -27,7 +27,6 @@ namespace Angle {
 		virtual void Uninitialize() {}
 		virtual void Run() {}
 
-		// Called when the CoreWindow object is created (or re-created).
 		virtual void SetWindow(CoreWindow^ window)
 		{
 			window->VisibilityChanged +=
