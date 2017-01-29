@@ -8,7 +8,7 @@ using namespace Windows::Foundation::Collections;
 using namespace Platform;
 
 namespace Angle {
-	ref class App sealed : public IFrameworkView
+	ref class App sealed : public IFrameworkView, IFrameworkViewSource
 	{
 	public:
 
@@ -21,40 +21,31 @@ namespace Angle {
 		{
 		}
 
+		// IFrameworkViewSource Methods.
+		virtual IFrameworkView^ CreateView()
+		{
+			return this;
+		}
+
 		// IFrameworkView Methods.
 		virtual void Initialize(CoreApplicationView^ applicationView) {}
 		virtual void Load(Platform::String^ entryPoint) {}
 		virtual void Uninitialize() {}
-		virtual void Run() {}
 
 		virtual void SetWindow(CoreWindow^ window)
 		{
-			window->VisibilityChanged +=
-				ref new TypedEventHandler<CoreWindow^, VisibilityChangedEventArgs^>(this, &App::OnWindowVisibilityChanged);
+			window->VisibilityChanged += ref new TypedEventHandler<CoreWindow^, VisibilityChangedEventArgs^>(this, &App::OnWindowVisibilityChanged);
 
-			window->Closed +=
-				ref new TypedEventHandler<CoreWindow^, CoreWindowEventArgs^>(this, &App::OnWindowClosed);
+			window->Closed += ref new TypedEventHandler<CoreWindow^, CoreWindowEventArgs^>(this, &App::OnWindowClosed);
 
 			InitializeEGL(window);
 
 			RecreateRenderer();
 
 			window->Activate();
-
-			RunApp();
 		}
 
-	private:
-
-		void RecreateRenderer()
-		{
-			if (!mCubeRenderer)
-			{
-				mCubeRenderer.reset(new SimpleRenderer());
-			}
-		}
-
-		void RunApp()
+		virtual void Run()
 		{
 			while (!mWindowClosed)
 			{
@@ -87,6 +78,16 @@ namespace Angle {
 
 			CleanupEGL();
 		}		
+
+	private:
+
+		void RecreateRenderer()
+		{
+			if (!mCubeRenderer)
+			{
+				mCubeRenderer.reset(new SimpleRenderer());
+			}
+		}
 
 		void OnWindowVisibilityChanged(CoreWindow^ sender, VisibilityChangedEventArgs^ args)
 		{
@@ -247,19 +248,9 @@ namespace Angle {
 	};
 }
 
-ref class SimpleApplicationSource sealed : IFrameworkViewSource
-{
-public:
-	virtual IFrameworkView^ CreateView()
-	{
-		return ref new Angle::App();
-	}
-};
-
 [MTAThread]
 int main(Array<String^>^)
 {
-	auto simpleApplicationSource = ref new SimpleApplicationSource();
-	CoreApplication::Run(simpleApplicationSource);
+	CoreApplication::Run(ref new Angle::App());
 	return 0;
 }

@@ -5,11 +5,10 @@ using namespace winrt::Windows::ApplicationModel::Core;
 using namespace winrt::Windows::UI::Core;
 using namespace winrt::Windows::Foundation;
 using namespace winrt::Windows::Foundation::Collections;
-using namespace winrt::Windows::UI::Xaml;
 using namespace winrt;
 
 namespace Angle {
-	struct App : ApplicationT<App>
+	struct App : implements<App, IFrameworkView, IFrameworkViewSource>
 	{
 	public:
 
@@ -22,9 +21,19 @@ namespace Angle {
 		{
 		}
 
-		void OnWindowCreated(const IInspectable&) {
-			auto window = CoreWindow::GetForCurrentThread();
+		// IFrameworkViewSource Methods.
+		IFrameworkView CreateView()
+		{
+			return *this;
+		}
 
+		// IFrameworkView Methods.
+		void Initialize(CoreApplicationView const &) { }
+		void Load(hstring_ref) { }
+		void Uninitialize() { }
+
+		void SetWindow(CoreWindow const& window)
+		{
 			window.VisibilityChanged({ this, &App::OnWindowVisibilityChanged });
 
 			window.Closed({ this, &App::OnWindowClosed });
@@ -34,20 +43,9 @@ namespace Angle {
 			RecreateRenderer();
 
 			window.Activate();
-
-			RunApp();
 		}
 
-	private:
-
-		void RecreateRenderer() {
-			if (!mCubeRenderer)
-			{
-				mCubeRenderer.reset(new SimpleRenderer());
-			}
-		}
-
-		void RunApp()
+		void Run()
 		{			
 			while (!mWindowClosed)
 			{
@@ -81,13 +79,26 @@ namespace Angle {
 			CleanupEGL();
 		}
 
-		void OnWindowVisibilityChanged(const IInspectable&, const winrt::Windows::UI::Core::VisibilityChangedEventArgs& args) {
+	private:
+
+		void RecreateRenderer() 
+		{
+			if (!mCubeRenderer)
+			{
+				mCubeRenderer.reset(new SimpleRenderer());
+			}
+		}
+
+		void OnWindowVisibilityChanged(const IInspectable&, const winrt::Windows::UI::Core::VisibilityChangedEventArgs& args) 
+		{
 			mWindowVisible = args.Visible();
 		}
 
-		void OnWindowClosed(const IInspectable&, const IInspectable&) {
+		void OnWindowClosed(const IInspectable&, const IInspectable&) 
+		{
 			mWindowClosed = true;
 		}
+
 
 		void InitializeEGL(CoreWindow const & window) {
 			const EGLint configAttributes[] =
@@ -205,7 +216,8 @@ namespace Angle {
 			}
 		}
 
-		void CleanupEGL() {
+		void CleanupEGL() 
+		{
 			if (mEglDisplay != EGL_NO_DISPLAY && mEglSurface != EGL_NO_SURFACE)
 			{
 				eglDestroySurface(mEglDisplay, mEglSurface);
@@ -225,14 +237,6 @@ namespace Angle {
 			}
 		}
 
-		//CoreWindow mCoreWindow{ nullptr };
-		//CoreDispatcher mDispatcher{ nullptr };
-
-		int m_width{ 0 };
-		int m_height{ 0 };
-		int m_xCenter{ 0 };
-		int m_yCenter{ 0 };
-
 		bool mWindowClosed;
 		bool mWindowVisible;
 
@@ -246,8 +250,5 @@ namespace Angle {
 
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
-	Application::Start([](auto &&)
-	{
-		winrt::make<Angle::App>();
-	});
+	CoreApplication::Run(Angle::App());
 }
