@@ -24,8 +24,6 @@ namespace winrt::Angle_Xaml_CppWinRT::implementation
 	{
 		InitializeComponent();
 
-		//CoreWindow window = Window::Current().CoreWindow();
-		
 		auto info =  DisplayInformation::GetForCurrentView();
 
 		mLogicalDpi = info.LogicalDpi() / 96.0f * SCALE_FACTOR;
