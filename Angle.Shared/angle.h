@@ -1,8 +1,4 @@
 #pragma once
-
-#include <memory>
-#include <wrl.h>
-
 // Enable function definitions in the GL headers below
 #define GL_GLEXT_PROTOTYPES
 
