@@ -29,7 +29,7 @@ WINRT_EXPORT namespace Angle {
 
 		// IFrameworkView Methods.
 		void Initialize(CoreApplicationView const &) { }
-		void Load(hstring_ref) { }
+		void Load(hstring) { }
 		void Uninitialize() { }
 
 		void SetWindow(CoreWindow const& window)
@@ -197,7 +197,7 @@ WINRT_EXPORT namespace Angle {
 			PropertySet surfaceCreationProperties;
 			surfaceCreationProperties.Insert(winrt::hstring(EGLNativeWindowTypeProperty), window);
 
-			auto parameters = reinterpret_cast<::IInspectable*>(winrt::get(surfaceCreationProperties));
+			auto parameters = reinterpret_cast<::IInspectable*>(winrt::get_abi(surfaceCreationProperties));
 			mEglSurface = eglCreateWindowSurface(mEglDisplay, config, parameters, surfaceAttributes);
 			if (mEglSurface == EGL_NO_SURFACE)
 			{

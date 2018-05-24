@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Angle.Shared", "Angle.Shared\Angle.Shared.vcxitems", "{85071BBE-A668-4C04-8B15-BA5EC9EDDC36}"
 EndProject
@@ -69,5 +69,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66FA6E29-4D4E-4EBE-9AD6-424A7C30B71E}
 	EndGlobalSection
 EndGlobal
