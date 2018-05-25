@@ -11,7 +11,7 @@ public:
 
 	void Initialize();
 #if __CPPWINRT
-	EGLSurface CreateSurface(winrt::Windows::UI::Xaml::Controls::SwapChainPanel const& panel, const winrt::Windows::Foundation::Size* renderSurfaceSize, const float* renderResolutionScale);
+	EGLSurface CreateSurface(winrt::Windows::Foundation::IInspectable const& panel, const winrt::Windows::Foundation::Size* renderSurfaceSize, const float* renderResolutionScale);
 #else
 	EGLSurface CreateSurface(Windows::UI::Core::CoreWindow ^ panel, const Windows::Foundation::Size* renderSurfaceSize, const float* renderResolutionScale);
 #endif

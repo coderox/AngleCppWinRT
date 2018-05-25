@@ -175,7 +175,7 @@ void OpenGLES::Reset() {
 }
 
 #if __CPPWINRT
-EGLSurface OpenGLES::CreateSurface(SwapChainPanel const& panel, const Size* renderSurfaceSize, const float* resolutionScale) {
+EGLSurface OpenGLES::CreateSurface(Windows::Foundation::IInspectable const& panel, const Size* renderSurfaceSize, const float* resolutionScale) {
 	if (!panel) {
 		throw ANGLE_ERROR(E_INVALIDARG, L"SwapChainPanel parameter is invalid");
 	}
