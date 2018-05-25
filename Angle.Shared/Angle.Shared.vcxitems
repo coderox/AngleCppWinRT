@@ -15,11 +15,13 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)OpenGLES.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SimpleRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)angle.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)MathHelper.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)OpenGLES.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SimpleRenderer.h" />
   </ItemGroup>
 </Project>
