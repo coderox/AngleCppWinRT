@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="OpenGLES.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="App.cpp" />
     <ClCompile Include="MainPage.cpp" />
-    <ClCompile Include="Generated Files\module.g.cpp" />
+    <ClCompile Include="App.cpp" />
+    <ClCompile Include="MainPage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OpenGLES.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="App.h" />
+    <ClInclude Include="MainPage.h" />
     <ClInclude Include="App.h" />
     <ClInclude Include="MainPage.h" />
   </ItemGroup>
@@ -43,18 +43,11 @@
     <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="App.idl" />
-    <Midl Include="MainPage.idl" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Angle_Xaml_CppWinRT_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

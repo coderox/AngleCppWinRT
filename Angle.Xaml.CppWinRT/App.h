@@ -1,14 +1,11 @@
 ﻿#pragma once
-#include "App.xaml.g.h"
+#include <winrt/Windows.UI.Xaml.h>
 
-namespace winrt::Angle_Xaml_CppWinRT::implementation
+namespace Angle 
 {
-    struct App : AppT<App>
+    struct App : winrt::Windows::UI::Xaml::ApplicationT<App>
     {
         App();
-
-        void OnLaunched(Windows::ApplicationModel::Activation::LaunchActivatedEventArgs const&);
-        void OnSuspending(IInspectable const&, Windows::ApplicationModel::SuspendingEventArgs const&);
-        void OnNavigationFailed(IInspectable const&, Windows::UI::Xaml::Navigation::NavigationFailedEventArgs const&);
+        void OnLaunched(winrt::Windows::ApplicationModel::Activation::LaunchActivatedEventArgs const&);
     };
 }
