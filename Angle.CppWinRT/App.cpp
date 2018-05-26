@@ -8,7 +8,7 @@ using namespace winrt::Windows::Foundation;
 using namespace winrt::Windows::Foundation::Collections;
 using namespace winrt;
 
-WINRT_EXPORT namespace Angle {
+namespace Angle {
 	struct App : implements<App, IFrameworkView, IFrameworkViewSource>
 	{
 	public:
