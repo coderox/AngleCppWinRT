@@ -2,14 +2,15 @@
 #include "OpenGLES.h"
 #include "SimpleRenderer.h"
 
-using namespace winrt::Windows::ApplicationModel::Core;
-using namespace winrt::Windows::UI::Core;
-using namespace winrt::Windows::Foundation;
-using namespace winrt::Windows::Foundation::Collections;
-using namespace winrt;
+using namespace winrt; 
+using namespace Windows::ApplicationModel::Core;
+using namespace Windows::UI::Core;
+using namespace Windows::Foundation;
+using namespace Windows::Foundation::Collections;
+
 
 namespace Angle {
-	struct App : implements<App, IFrameworkView, IFrameworkViewSource>
+	struct App : implements<App, IFrameworkViewSource, IFrameworkView>
 	{
 	public:
 
@@ -126,5 +127,5 @@ namespace Angle {
 
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, PWSTR, int)
 {
-	CoreApplication::Run(Angle::App());
+	CoreApplication::Run(make<Angle::App>());
 }
