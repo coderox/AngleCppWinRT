@@ -48,11 +48,13 @@ namespace Angle {
 
 		virtual void Run()
 		{
+			auto dispatcher = CoreWindow::GetForCurrentThread()->Dispatcher;
+			
 			while (!mWindowClosed)
 			{
 				if (mWindowVisible)
 				{
-					CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
+					dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
 
 					EGLint panelWidth = 0;
 					EGLint panelHeight = 0;
@@ -72,7 +74,7 @@ namespace Angle {
 				}
 				else
 				{
-					CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneAndAllPending);
+					dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneAndAllPending);
 				}
 			}
 
